@@ -10,6 +10,7 @@ export class Edge {
     id: string;
     private _source: Vertex;
     private _target: Vertex;
+    geometry: LineString;
     
     constructor(_source: Vertex, _target: Vertex) {
         this._source = _source;
@@ -21,7 +22,8 @@ export class Edge {
     }
 
     getGeometry(): LineString {
-        return {
+        
+        return this.geometry ? this.geometry : {
             type: "LineString",
             coordinates: [
                 this._source.coordinate,
@@ -36,6 +38,10 @@ export class Edge {
 
     getTarget(): Vertex {
         return this._target
+    }
+
+    setGeometry(geometry: LineString) {
+        this.geometry = geometry;
     }
 
 
