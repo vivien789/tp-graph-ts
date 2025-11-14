@@ -30,8 +30,6 @@ export function createTestGraph01(): Graph {
 
 	const ab = new Edge(a,b);
 	ab.id = "ab";
-	ab.getSource(); 
-	ab.getTarget();
 	g.edges.push(ab);
 
 	const bc = new Edge(b,c);

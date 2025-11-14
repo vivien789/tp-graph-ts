@@ -32,8 +32,8 @@ describe("test RoutingService", () => {
                 expect(edge.id).to.be.not.empty;
 
                 // check 2D coordinates
-                expect(edge.source).to.be.not.null;
-                expect(edge.target).to.be.not.null;
+                expect(edge.getSource()).to.be.not.null;
+                expect(edge.getTarget()).to.be.not.null;
 
                 // length is positive
                 const length = edge.getLength();
@@ -47,10 +47,12 @@ describe("test RoutingService", () => {
                 const geometry = edge.getGeometry();
 
                 const startCoordinate = geometry.coordinates[0];
-                expect(startCoordinate).to.deep.equal(edge.source.coordinate);
+                const dep = edge.getSource();
+                expect(startCoordinate).to.deep.equal(dep.coordinate);
 
                 const endCoordinate = geometry.coordinates[geometry.coordinates.length - 1];
-                expect(endCoordinate).to.deep.equal(edge.target.coordinate);
+                const fin = edge.getTarget();
+                expect(endCoordinate).to.deep.equal(fin.coordinate);
             }
         });
 
